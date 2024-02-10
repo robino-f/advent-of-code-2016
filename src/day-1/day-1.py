@@ -5,19 +5,20 @@ f = open("data/input.txt", "r")
 Direction = Enum('Direction', ['EAST', 'SOUTH', 'WEST', 'NORTH'])
 instructions = f.read().split(', ')
 
+
 def solve(part2=False):
     x = 0
     y = 0
     direction = ''
     visitedLocations = {'0 0': True}
-   
+
     for instruction in instructions:
         value = 0
         previousX = x
         previousY = y
 
         if instruction.find('R') == 0:
-            value = instruction.replace('R','')
+            value = instruction.replace('R', '')
             if direction == '':
                 direction = Direction.EAST
             elif direction == Direction.EAST:
@@ -29,7 +30,7 @@ def solve(part2=False):
             elif direction == Direction.NORTH:
                 direction = Direction.EAST
         else:
-            value = instruction.replace('L','')
+            value = instruction.replace('L', '')
             if direction == '':
                 direction = Direction.WEST
             elif direction == Direction.WEST:
@@ -40,7 +41,7 @@ def solve(part2=False):
                 direction = Direction.NORTH
             elif direction == Direction.NORTH:
                 direction = Direction.WEST
-        
+
         value = int(value)
 
         if direction == Direction.EAST:
@@ -58,14 +59,15 @@ def solve(part2=False):
                 if key in visitedLocations:
                     return abs(i) + abs(y)
                 visitedLocations[key] = True
-            
+
             for i in range(min(previousY+1, y+1), max(previousY, y)):
-                key =  '{x} {y}'.format(x=x, y=i)
+                key = '{x} {y}'.format(x=x, y=i)
                 if key in visitedLocations:
                     return abs(x) + abs(i)
                 visitedLocations[key] = True
-    
+
     return abs(x) + abs(y)
 
-print(solve()) # 291
-print(solve(True)) # 159
+
+print(solve())  # 291
+print(solve(True))  # 159

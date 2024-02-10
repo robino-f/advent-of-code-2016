@@ -1,7 +1,7 @@
 [Advent of code 2016](https://adventofcode.com/2016)
 
 -   [x] day 1
--   [ ] day 2
+-   [x] day 2
 -   [ ] day 3
 -   [ ] day 4
 -   [ ] day 5
@@ -26,4 +26,4 @@
 -   [ ] day 24
 -   [ ] day 25
 
-run files using `ts-node`
+run files using `python`
